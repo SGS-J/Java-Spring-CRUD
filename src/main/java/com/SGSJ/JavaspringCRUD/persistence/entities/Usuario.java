@@ -8,33 +8,33 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private long IdUsuario;
     private String Nombre;
     private String Contraseña;
-    private Integer Edad;
+    private int Edad;
     private String Correo;
 
-    public Usuario(Long idUsuario, String nombre, String contraseña, Integer edad) {
-        this.idUsuario = idUsuario;
+    public Usuario(long idUsuario, String nombre, String contraseña, int edad) {
+        this.IdUsuario = idUsuario;
         Nombre = nombre;
         Contraseña = contraseña;
         Edad = edad;
     }
 
-    public Usuario(Long idUsuario, String nombre, String contraseña, Integer edad, String correo) {
-        this.idUsuario = idUsuario;
+    public Usuario(long idUsuario, String nombre, String contraseña, int edad, String correo) {
+        this.IdUsuario = idUsuario;
         Nombre = nombre;
         Contraseña = contraseña;
         Edad = edad;
         Correo = correo;
     }
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public long getIdUsuario() {
+        return IdUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(long idUsuario) {
+        this.IdUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -53,11 +53,11 @@ public class Usuario {
         Contraseña = contraseña;
     }
 
-    public Integer getEdad() {
+    public int getEdad() {
         return Edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         Edad = edad;
     }
 
