@@ -10,11 +10,10 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserRepository {
-    private final UsuarioCrud usuarioCrud;
-    private final UserDTO userDto;
+    private UsuarioCrud usuarioCrud;
+    private UserDTO userDto;
 
-    @Autowired
-    public UserService(UsuarioCrud usuarioCrud, UserDTO userDto) {
+    @Autowired public UserService(UsuarioCrud usuarioCrud, UserDTO userDto) {
         this.usuarioCrud = usuarioCrud;
         this.userDto = userDto;
     }

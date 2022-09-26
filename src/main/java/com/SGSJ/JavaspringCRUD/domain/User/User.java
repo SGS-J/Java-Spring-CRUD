@@ -1,17 +1,17 @@
 package com.SGSJ.JavaspringCRUD.domain.User;
 
 public class User {
-    private long userId;
+    private Long userId;
     private String name;
     private String password;
     private int age;
     private String email;
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
