@@ -26,7 +26,7 @@ public class UserService implements UserRepository {
 
     @Override
     public List<User> getAllOrdered() {
-        return userDto.toUsers(usuarioCrud.findAllOrderByAsc());
+        return userDto.toUsers(usuarioCrud.findAllOrdered());
     }
 
     @Override

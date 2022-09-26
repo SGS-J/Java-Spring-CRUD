@@ -11,11 +11,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
     @Mappings({
-            @Mapping(source = "IdUsuario", target = "userId"),
-            @Mapping(source = "Nombre", target = "name"),
-            @Mapping(source = "Contraseña", target = "password"),
-            @Mapping(source = "Edad", target = "userId"),
-            @Mapping(source = "Correo", target = "email")
+            @Mapping(source = "idUsuario", target = "userId"),
+            @Mapping(source = "nombre", target = "name"),
+            @Mapping(source = "contraseña", target = "password"),
+            @Mapping(source = "edad", target = "age"),
+            @Mapping(source = "correo", target = "email")
     })
     User toUser(Usuario usuario);
     List<User> toUsers(List<Usuario> usuarios);

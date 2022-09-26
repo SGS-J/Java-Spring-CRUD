@@ -22,7 +22,7 @@ public class UserController {
         return userRepo.getAllOrdered();
     }
 
-    @GetMapping("/:id")
+    @GetMapping("/{userId}")
     public User getUserById(@PathVariable long userId) {
        Optional<User> user = userRepo.getById(userId);
        if(user == null) {
@@ -33,7 +33,18 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public User createUser(User user) {
+    public User createUser(@RequestBody User user) {
         return userRepo.save(user);
     }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable long userId){
+       userRepo.delete(userId);
+    }
+
+    @PutMapping("/{userId}")
+    public User updateUserById(@RequestBody User user, @PathVariable long userId) {
+        return userRepo.update(user, userId);
+    }
+
 }
