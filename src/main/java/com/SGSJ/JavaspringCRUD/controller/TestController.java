@@ -1,4 +1,4 @@
-package com.SGSJ.JavaspringCRUD.web.controller;
+package com.SGSJ.JavaspringCRUD.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

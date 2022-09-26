@@ -1,4 +1,4 @@
-package com.SGSJ.JavaspringCRUD.persistence.entities;
+package com.SGSJ.JavaspringCRUD.model.User;
 
 import javax.persistence.*;
 

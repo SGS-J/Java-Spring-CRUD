@@ -1,7 +1,6 @@
-package com.SGSJ.JavaspringCRUD.service.mapper;
+package com.SGSJ.JavaspringCRUD.model.User;
 
-import com.SGSJ.JavaspringCRUD.domain.User;
-import com.SGSJ.JavaspringCRUD.persistence.entities.Usuario;
+import com.SGSJ.JavaspringCRUD.domain.User.User;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,7 +9,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper {
+public interface UsuarioMapper {
     @Mappings({
             @Mapping(source = "IdUsuario", target = "userId"),
             @Mapping(source = "Nombre", target = "name"),
@@ -23,4 +22,5 @@ public interface UserMapper {
 
     @InheritInverseConfiguration
     Usuario toUsuario(User user);
+    List<Usuario> toUsuarios(List<User> users);
 }

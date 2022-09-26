@@ -1,4 +1,4 @@
-package com.SGSJ.JavaspringCRUD.domain;
+package com.SGSJ.JavaspringCRUD.domain.User;
 
 public class User {
     private long userId;
