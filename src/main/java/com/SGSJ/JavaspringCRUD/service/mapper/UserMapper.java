@@ -1,4 +1,4 @@
-package com.SGSJ.JavaspringCRUD.persistence.mapper;
+package com.SGSJ.JavaspringCRUD.service.mapper;
 
 import com.SGSJ.JavaspringCRUD.domain.User;
 import com.SGSJ.JavaspringCRUD.persistence.entities.Usuario;
