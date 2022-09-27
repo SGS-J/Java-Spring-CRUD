@@ -1,16 +1,13 @@
 package com.SGSJ.JavaspringCRUD.model.User;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long idusuario;
     private String Nombre;
     private String Contraseña;
     private int Edad;
@@ -21,14 +18,14 @@ public class Usuario {
     }
 
     public Usuario(Long idUsuario, String Nombre, String contraseña, int edad) {
-        this.idUsuario = idUsuario;
+        this.idusuario = idUsuario;
         this.Nombre = Nombre;
         Contraseña = contraseña;
         Edad = edad;
     }
 
     public Usuario(Long idUsuario, String Nombre, String contraseña, int edad, String correo) {
-        this.idUsuario = idUsuario;
+        this.idusuario = idUsuario;
         this.Nombre = Nombre;
         Contraseña = contraseña;
         Edad = edad;
@@ -36,11 +33,11 @@ public class Usuario {
     }
 
     public Long getIdUsuario() {
-        return idUsuario;
+        return idusuario;
     }
 
     public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+        this.idusuario = idUsuario;
     }
 
     public String getNombre() {
