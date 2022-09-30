@@ -39,12 +39,14 @@ public class UserController {
         return userRepo.save(user);
     }
 
-    @DeleteMapping("delete/{userId}")
-    public void deleteUser(@PathVariable Long userId){
+    @DeleteMapping("/delete/{userId}")
+    synchronized public String deleteUser(@PathVariable Long userId) {
+        String userName = userRepo.getById(userId).get().getName();
        userRepo.delete(userId);
+       return "User " + userName + " deleted!";
     }
 
-    @PutMapping("update/{userId}")
+    @PutMapping("/update/{userId}")
     public User updateUserById(@RequestBody User user, @PathVariable Long userId) {
         return userRepo.update(user, userId);
     }

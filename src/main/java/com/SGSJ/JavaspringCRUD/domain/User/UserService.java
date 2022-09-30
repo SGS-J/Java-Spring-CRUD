@@ -42,10 +42,10 @@ public class UserService implements UserRepository {
     public User update(User user, long userId) {
         User userNew = getById(userId).get();
 
-        userNew.setName(user.getName());
-        userNew.setPassword(user.getPassword());
-        userNew.setAge(user.getAge());
-        userNew.setEmail(user.getEmail());
+        userNew.setName(user.getName() == null ? userNew.getName() : user.getName());
+        userNew.setPassword(user.getPassword() == null ? userNew.getPassword() : user.getPassword());
+        userNew.setAge(Integer.valueOf(user.getAge()) == null ? userNew.getAge() : user.getAge());
+        userNew.setEmail(user.getEmail() == null ? userNew.getEmail() : user.getEmail());
 
         usuarioCrud.save(userDto.toUsuario(userNew));
         return userNew;
