@@ -2,6 +2,7 @@ package com.SGSJ.JavaspringCRUD.domain.User;
 
 import com.SGSJ.JavaspringCRUD.model.User.Usuario;
 import com.SGSJ.JavaspringCRUD.model.User.UsuarioCrud;
+import com.SGSJ.JavaspringCRUD.security.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,21 @@ public class UserService implements UserRepository {
     }
 
     @Override
-    public User save(User user) {
+    public Optional<User> getByEmail(String email) {
+        Optional<Usuario> usuario = usuarioCrud.findByEmail(email);
+        if(usuario.isEmpty()) {
+            return Optional.empty();
+        }
+        User user = userDto.toUser(usuario.get());
+        return Optional.of(user);
+    }
+
+    @Override
+    synchronized public User save(User user) {
+        String password = user.getPassword();
+        String salt = Encrypt.getSalt(10);
+        String hash = Encrypt.generateStringHash(password, salt);
+        user.setPassword(hash);
         return userDto.toUser(usuarioCrud.save(userDto.toUsuario(user)));
     }
 
@@ -49,6 +64,28 @@ public class UserService implements UserRepository {
 
         usuarioCrud.save(userDto.toUsuario(userNew));
         return userNew;
+    }
+
+    @Override
+    synchronized public Optional<User> logIn(String email, String password) {
+        Optional<User> user = getByEmail(email);
+        if(user.isEmpty()) {
+            return Optional.empty();
+        }
+
+        String salt = password.substring(0, 10);
+        String storedPasword = user.get().getPassword();
+        boolean passwordMatch = Encrypt.verifyStringHash(password, storedPasword, salt);
+
+        if(passwordMatch) {
+            return user;
+        }
+
+        return Optional.empty();
+    }
+
+    @Override
+    public void logOut() {
     }
 
     @Override

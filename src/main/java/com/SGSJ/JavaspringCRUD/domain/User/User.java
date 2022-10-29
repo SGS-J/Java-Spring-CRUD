@@ -1,5 +1,8 @@
 package com.SGSJ.JavaspringCRUD.domain.User;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
     private Long userId;
     private String name;

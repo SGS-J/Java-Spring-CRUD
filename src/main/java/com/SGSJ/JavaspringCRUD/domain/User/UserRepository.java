@@ -1,6 +1,5 @@
 package com.SGSJ.JavaspringCRUD.domain.User;
 
-import com.SGSJ.JavaspringCRUD.model.User.Usuario;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +10,10 @@ public interface UserRepository {
     List<User> getAll();
     List<User> getAllOrdered();
     Optional<User> getById(long userId);
+    Optional<User> getByEmail(String email);
     User save(User user);
     User update(User user, long userId);
+    Optional<User>logIn(String email, String password);
+    void logOut();
     void delete(long userId);
 }

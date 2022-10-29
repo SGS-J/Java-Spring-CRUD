@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
     @Autowired
     private UserRepository userRepo;
@@ -40,8 +40,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{userId}")
-    synchronized public String deleteUser(@PathVariable Long userId) {
-        String userName = userRepo.getById(userId).get().getName();
+    public String deleteUser(@PathVariable Long userId, @RequestBody String userName) {
        userRepo.delete(userId);
        return "User " + userName + " deleted!";
     }
