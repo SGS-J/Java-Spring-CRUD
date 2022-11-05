@@ -14,21 +14,25 @@ import LogIn from "./components/LogIn";
 const App = (args) => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
+  const MainNav = (
+    <Nav className="me-auto" navbar>
+      <NavItem>
+        <Link to="/">Home</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="login">Log In</Link>
+      </NavItem>
+    </Nav>
+  );
 
   return (
     <BrowserRouter>
       <Navbar {...args}>
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={toggle} className="me-auto"/>
-        <Collapse isOpen={isOpen} navbar className="me-2">
-          <Nav className="me-auto" navbar>
-            <NavItem>
-              <Link to="/">Home</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="login">Log In</Link>
-            </NavItem>
-          </Nav>
+        <NavbarBrand href="/">Spring Example App</NavbarBrand>
+        <MainNav />
+        <NavbarToggler onClick={toggle} className="md" />
+        <Collapse isOpen={isOpen} navbar className="md">
+          <MainNav />
         </Collapse>
       </Navbar>
 

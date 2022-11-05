@@ -27,11 +27,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public User getUserById(@PathVariable Long userId) {
        Optional<User> user = userRepo.getById(userId);
-       if(user == null) {
-           return new User();
-       } else {
-           return user.get();
-       }
+        return user.orElseGet(User::new);
     }
 
     @PostMapping("/register")
