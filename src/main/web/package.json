@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "run": "webpack",
+    "pack": "webpack",
     "serve": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
-    "reactstrap": "^9.1.5",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",

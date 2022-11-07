@@ -1,12 +1,4 @@
 import React, { useState } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-  Nav,
-} from "reactstrap";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import LogIn from "./components/LogIn";
@@ -14,27 +6,37 @@ import LogIn from "./components/LogIn";
 const App = (args) => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
-  const MainNav = (
-    <Nav className="me-auto" navbar>
-      <NavItem>
-        <Link to="/">Home</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="login">Log In</Link>
-      </NavItem>
-    </Nav>
-  );
 
   return (
     <BrowserRouter>
-      <Navbar {...args}>
-        <NavbarBrand href="/">Spring Example App</NavbarBrand>
-        <MainNav />
-        <NavbarToggler onClick={toggle} className="md" />
-        <Collapse isOpen={isOpen} navbar className="md">
-          <MainNav />
-        </Collapse>
-      </Navbar>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            Spring with React App
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
+              </li>
+              <li class="nav-item">
+                <Link to="login" className="nav-link">Log In</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
