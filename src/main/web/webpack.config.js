@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.join(__dirname, "index.js"),
+  entry: path.join(__dirname, "index.tsx"),
   cache: true,
   mode: "development",
   output: {
@@ -9,19 +9,15 @@ module.exports = {
     filename: "bundle.js",
     clean: true,
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
   module: {
     rules: [
       {
-        test: /\.(js)$/i,
+        test: /\.(tsx?)$/i,
         exclude: /(node_modules)/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"],
-            },
-          },
-        ],
+        use: "ts-loader",
       },
       {
         test: /\.(scss)$/i,
