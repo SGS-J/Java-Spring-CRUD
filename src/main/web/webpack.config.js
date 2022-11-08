@@ -15,6 +15,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|svg)$/,
+        use: "file-loader",
+      },
+      {
         test: /\.(tsx?)$/i,
         exclude: /(node_modules)/,
         use: "ts-loader",
