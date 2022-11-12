@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.join(__dirname, "index.tsx"),
+  entry: path.join(__dirname, "index.ts"),
   cache: true,
   mode: "development",
   output: {
