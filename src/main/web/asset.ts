@@ -1,10 +1,7 @@
-export class AssetLoader {
-  static readonly readAsset = (route: AssetURL): string => {
-    return "/public/assets" + route;
-  };
-}
+import MainLogo from "./public/assets/download.png";
+import MainBG from "./public/assets/main-bg.jpg";
 
 export enum AssetURL {
-  MAIN_LOGO = "/download.png",
-  MAIN_BG = "/main-bg.jpg",
+  MAIN_LOGO = MainLogo,
+  MAIN_BG = MainBG,
 }

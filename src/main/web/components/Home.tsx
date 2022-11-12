@@ -1,12 +1,11 @@
 import React from "react";
-import { AssetLoader, AssetURL } from "../asset";
+import { AssetURL } from "../asset";
 import MainBG from "./../public/assets/main-bg.jpg";
 
 const Home = () => {
-  const bgUrl: string = AssetLoader.readAsset(AssetURL.MAIN_BG);
   return (
     <div>
-      <img src={bgUrl}></img>
+      <img src={AssetURL.MAIN_BG.toString()}></img>
       Main page
     </div>
   );

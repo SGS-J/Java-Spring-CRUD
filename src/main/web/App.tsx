@@ -3,13 +3,13 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import Home from "./components/Home";
 import LogIn from "./components/LogIn";
-import SpringLogo from "./public/assets/download.png";
+import { AssetURL } from "./asset";
 
 const App: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   const logo: Logo = {
-    url: SpringLogo,
+    url: AssetURL.MAIN_LOGO.toString(),
     width: 30,
     height: 30,
   };
