@@ -46,7 +46,7 @@ const App: FC = () => {
         <Route path="login" element={<LogIn />} />
       </Routes>
 
-      <Container className="d-flex justify-content-center bottom-100">
+      <Container className="d-flex justify-content-center bottom-100 my-5">
         <img
           className="d-inline align-top"
           src={logo.url}
