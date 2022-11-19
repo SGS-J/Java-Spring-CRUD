@@ -16,7 +16,7 @@ const App: FC = () => {
 
   return (
     <BrowserRouter>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="shadow" bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -42,11 +42,11 @@ const App: FC = () => {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<LogIn />} />
+        <Route path="/" element={<Home mainbg={AssetURL.MAIN_BG.toString()} />} />
+        <Route path="login" element={<LogIn mainbg={AssetURL.MAIN_BG.toString()} />} />
       </Routes>
 
-      <Container className="d-flex justify-content-center bottom-100 my-5">
+      <Container fluid className="d-flex justify-content-center bottom-100 py-5 shadow">
         <img
           className="d-inline align-top"
           src={logo.url}

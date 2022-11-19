@@ -6,3 +6,7 @@ declare interface Logo {
   width: number;
   height: number;
 }
+
+declare interface FrontPageProps {
+  mainbg: string;
+}
