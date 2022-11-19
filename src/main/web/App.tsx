@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import Home from "./components/Home";
-import LogIn from "./components/LogIn";
-import { AssetURL } from "./asset";
+import React, { FC, useState } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import Home from './components/Home';
+import LogIn from './components/LogIn';
+import { AssetURL } from './asset';
 
 const App: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -18,14 +18,14 @@ const App: FC = () => {
     <BrowserRouter>
       <Navbar className="shadow" bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               className="d-inline align-top"
               src={logo.url}
               width={logo.width}
               height={logo.height}
             />
-            {"  "}Spring boot React App
+            {'  '}Spring boot React App
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -42,11 +42,20 @@ const App: FC = () => {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Home mainbg={AssetURL.MAIN_BG.toString()} />} />
-        <Route path="login" element={<LogIn mainbg={AssetURL.MAIN_BG.toString()} />} />
+        <Route
+          path="/"
+          element={<Home mainbg={AssetURL.MAIN_BG.toString()} />}
+        />
+        <Route
+          path="login"
+          element={<LogIn mainbg={AssetURL.MAIN_BG.toString()} />}
+        />
       </Routes>
 
-      <Container fluid className="d-flex justify-content-center bottom-100 py-5 shadow">
+      <Container
+        fluid
+        className="d-flex justify-content-center bottom-100 py-5 shadow"
+      >
         <img
           className="d-inline align-top"
           src={logo.url}
