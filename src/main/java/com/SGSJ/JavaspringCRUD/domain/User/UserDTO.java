@@ -1,7 +1,7 @@
 package com.SGSJ.JavaspringCRUD.domain.User;
 
-import com.SGSJ.JavaspringCRUD.model.User.Usuario;
-import com.SGSJ.JavaspringCRUD.model.User.UsuarioMapper;
+import com.SGSJ.JavaspringCRUD.model.Users.Users;
+import com.SGSJ.JavaspringCRUD.model.Users.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,21 +11,21 @@ import java.util.List;
 public class UserDTO {
 
     @Autowired
-    private UsuarioMapper mapper;
+    private UsersMapper mapper;
 
-    public User toUser(Usuario usuario) {
+    public User toUser(Users usuario) {
         return mapper.toUser(usuario);
     }
 
-    public List<User> toUsers(List<Usuario> usuario) {
+    public List<User> toUsers(List<Users> usuario) {
         return mapper.toUsers(usuario);
     }
 
-    public Usuario toUsuario(User user) {
+    public Users toUsuario(User user) {
         return mapper.toUsuario(user);
     }
 
-    public List<Usuario> toUsuarios(List<User> users) {
+    public List<Users> toUsuarios(List<User> users) {
         return mapper.toUsuarios(users);
     }
 }

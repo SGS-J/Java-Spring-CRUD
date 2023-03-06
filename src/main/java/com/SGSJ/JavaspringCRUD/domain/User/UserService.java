@@ -1,7 +1,7 @@
 package com.SGSJ.JavaspringCRUD.domain.User;
 
-import com.SGSJ.JavaspringCRUD.model.User.Usuario;
-import com.SGSJ.JavaspringCRUD.model.User.UsuarioCrud;
+import com.SGSJ.JavaspringCRUD.model.Users.Users;
+import com.SGSJ.JavaspringCRUD.model.Users.UsersCrud;
 import com.SGSJ.JavaspringCRUD.security.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,32 +11,32 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserRepository {
-    private UsuarioCrud usuarioCrud;
+    private UsersCrud usersCrud;
     private UserDTO userDto;
 
-    @Autowired public UserService(UsuarioCrud usuarioCrud, UserDTO userDto) {
-        this.usuarioCrud = usuarioCrud;
+    @Autowired public UserService(UsersCrud usersCrud, UserDTO userDto) {
+        this.usersCrud = usersCrud;
         this.userDto = userDto;
     }
 
     @Override
     public List<User> getAll() {
-        return userDto.toUsers((List<Usuario>) usuarioCrud.findAll());
+        return userDto.toUsers((List<Users>) usersCrud.findAll());
     }
 
     @Override
     public List<User> getAllOrdered() {
-        return userDto.toUsers(usuarioCrud.findAllOrdered());
+        return userDto.toUsers(usersCrud.findAllOrdered());
     }
 
     @Override
     public Optional<User> getById(long userId) {
-        return usuarioCrud.findById(userId).map(user -> userDto.toUser(user));
+        return usersCrud.findById(userId).map(user -> userDto.toUser(user));
     }
 
     @Override
     public Optional<User> getByEmail(String email) {
-        Optional<Usuario> usuario = usuarioCrud.findByEmail(email);
+        Optional<Users> usuario = usersCrud.findByEmail(email);
         if(usuario.isEmpty()) {
             return Optional.empty();
         }
@@ -50,7 +50,7 @@ public class UserService implements UserRepository {
         String salt = Encrypt.getSalt(10);
         String hash = Encrypt.generateStringHash(password, salt);
         user.setPassword(hash);
-        return userDto.toUser(usuarioCrud.save(userDto.toUsuario(user)));
+        return userDto.toUser(usersCrud.save(userDto.toUsuario(user)));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class UserService implements UserRepository {
         userNew.setAge(Integer.valueOf(user.getAge()) == null ? userNew.getAge() : user.getAge());
         userNew.setEmail(user.getEmail() == null ? userNew.getEmail() : user.getEmail());
 
-        usuarioCrud.save(userDto.toUsuario(userNew));
+        usersCrud.save(userDto.toUsuario(userNew));
         return userNew;
     }
 
@@ -90,6 +90,6 @@ public class UserService implements UserRepository {
 
     @Override
     public void delete(long userId) {
-        usuarioCrud.deleteById(userId);
+        usersCrud.deleteById(userId);
     }
 }

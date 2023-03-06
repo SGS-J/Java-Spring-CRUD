@@ -9,6 +9,15 @@ public class User {
     private String password;
     private int age;
     private String email;
+    private String imageUp;
+
+    public String getImageUp() {
+        return imageUp;
+    }
+
+    public void setImageUp(String imageUp) {
+        this.imageUp = imageUp;
+    }
 
     public Long getUserId() {
         return userId;
