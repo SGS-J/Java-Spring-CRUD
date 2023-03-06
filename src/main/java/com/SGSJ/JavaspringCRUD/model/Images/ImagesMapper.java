@@ -13,7 +13,7 @@ public interface ImagesMapper {
     @Mappings({
             @Mapping(source = "imageId", target = "imageId"),
             @Mapping(source = "imageUrl", target = "imageUrl"),
-            @Mapping(source = "user", target = "user")
+            @Mapping(source = "users", target = "user")
     })
     Image toImageDomain(Images image);
     List<Image> toImagesDomain(List<Images> images);
