@@ -21,17 +21,17 @@ public class UserService implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        return userDto.toUsers((List<Users>) usersCrud.findAll());
+        return userDto.toUsersDomain((List<Users>) usersCrud.findAll());
     }
 
     @Override
     public List<User> getAllOrdered() {
-        return userDto.toUsers(usersCrud.findAllOrdered());
+        return userDto.toUsersDomain(usersCrud.findAllOrdered());
     }
 
     @Override
     public Optional<User> getById(long userId) {
-        return usersCrud.findById(userId).map(user -> userDto.toUser(user));
+        return usersCrud.findById(userId).map(user -> userDto.toUserDomain(user));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserService implements UserRepository {
         if(usuario.isEmpty()) {
             return Optional.empty();
         }
-        User user = userDto.toUser(usuario.get());
+        User user = userDto.toUserDomain(usuario.get());
         return Optional.of(user);
     }
 
@@ -50,7 +50,7 @@ public class UserService implements UserRepository {
         String salt = Encrypt.getSalt(10);
         String hash = Encrypt.generateStringHash(password, salt);
         user.setPassword(hash);
-        return userDto.toUser(usersCrud.save(userDto.toUsuario(user)));
+        return userDto.toUserDomain(usersCrud.save(userDto.toUserModel(user)));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class UserService implements UserRepository {
         userNew.setAge(Integer.valueOf(user.getAge()) == null ? userNew.getAge() : user.getAge());
         userNew.setEmail(user.getEmail() == null ? userNew.getEmail() : user.getEmail());
 
-        usersCrud.save(userDto.toUsuario(userNew));
+        usersCrud.save(userDto.toUserModel(userNew));
         return userNew;
     }
 

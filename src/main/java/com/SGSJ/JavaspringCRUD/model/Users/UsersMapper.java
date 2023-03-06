@@ -17,10 +17,10 @@ public interface UsersMapper {
             @Mapping(source = "age", target = "age"),
             @Mapping(source = "email", target = "email"),
     })
-    User toUser(Users usuario);
-    List<User> toUsers(List<Users> usuarios);
+    User toUserDomain(Users user);
+    List<User> toUsersDomain(List<Users> users);
 
     @InheritInverseConfiguration
-    Users toUsuario(User user);
-    List<Users> toUsuarios(List<User> users);
+    Users toUserModel(User user);
+    List<Users> toUsersModel(List<User> users);
 }

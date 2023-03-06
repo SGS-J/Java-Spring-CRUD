@@ -13,19 +13,19 @@ public class UserDTO {
     @Autowired
     private UsersMapper mapper;
 
-    public User toUser(Users usuario) {
-        return mapper.toUser(usuario);
+    public User toUserDomain(Users user) {
+        return mapper.toUserDomain(user);
     }
 
-    public List<User> toUsers(List<Users> usuario) {
-        return mapper.toUsers(usuario);
+    public List<User> toUsersDomain(List<Users> users) {
+        return mapper.toUsersDomain(users);
     }
 
-    public Users toUsuario(User user) {
-        return mapper.toUsuario(user);
+    public Users toUserModel(User user) {
+        return mapper.toUserModel(user);
     }
 
-    public List<Users> toUsuarios(List<User> users) {
-        return mapper.toUsuarios(users);
+    public List<Users> toUsersModel(List<User> users) {
+        return mapper.toUsersModel(users);
     }
 }
