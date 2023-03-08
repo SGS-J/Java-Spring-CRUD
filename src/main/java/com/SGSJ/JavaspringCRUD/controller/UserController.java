@@ -35,6 +35,10 @@ public class UserController {
         return userRepo.save(user);
     }
 
+    @PostMapping("/login")
+    public void login() {
+    }
+
     @DeleteMapping("/delete/{userId}")
     public String deleteUser(@PathVariable Long userId, @RequestBody String userName) {
        userRepo.delete(userId);
