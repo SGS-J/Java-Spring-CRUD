@@ -11,4 +11,6 @@ public interface ImageRepository {
     Optional<Image> getById(Long id);
     Optional<Image> getByUrl(String url);
     Optional<List<Image>> getByUserId(Long userId);
+    Image add(Image image);
+    void deleteById(Long id);
 }

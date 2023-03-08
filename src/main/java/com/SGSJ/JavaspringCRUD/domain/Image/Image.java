@@ -1,6 +1,7 @@
 package com.SGSJ.JavaspringCRUD.domain.Image;
 
 import com.SGSJ.JavaspringCRUD.domain.User.User;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Image {
     private Long imageId;
@@ -8,7 +9,6 @@ public class Image {
     private User user;
 
     public Image () {
-
     }
     public Image(Long imageId, String imageUrl, User user) {
         this.imageId = imageId;

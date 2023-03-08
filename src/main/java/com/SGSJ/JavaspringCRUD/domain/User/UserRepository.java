@@ -12,7 +12,7 @@ public interface UserRepository {
     Optional<User> getById(long userId);
     Optional<User> getByEmail(String email);
     User save(User user);
-    User update(User user, long userId);
+    User update(User user, Long userId);
     Optional<User>logIn(String email, String password);
     void logOut();
     void delete(long userId);

@@ -1,7 +1,6 @@
 package com.SGSJ.JavaspringCRUD.model.Users;
 
 import com.SGSJ.JavaspringCRUD.model.Images.Images;
-import com.SGSJ.JavaspringCRUD.model.Passwords.Passwords;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -15,18 +14,18 @@ public class Users {
     @Column(name = "user_id")
     private Long userId;
     private String userName;
+    @NotNull
+    private String userPassword;
     private Integer age;
     @NotNull
     private String email;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Passwords userPassword;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Images> images;
 
     public Users() {
     }
 
-    public Users(Long userId, String userName, Passwords userPassword, int age, String email, List<Images> images) {
+    public Users(Long userId, String userName, String userPassword, int age, String email, List<Images> images) {
         this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;
@@ -59,11 +58,11 @@ public class Users {
         this.userName = userName;
     }
 
-    public Passwords getUserPassword() {
+    public String getUserPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(Passwords userPassword) {
+    public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 

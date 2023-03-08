@@ -54,7 +54,7 @@ public class UserService implements UserRepository {
     }
 
     @Override
-    public User update(User user, long userId) {
+    public User update(User user, Long userId) {
         User userNew = getById(userId).get();
 
         userNew.setName(user.getName() == null ? userNew.getName() : user.getName());

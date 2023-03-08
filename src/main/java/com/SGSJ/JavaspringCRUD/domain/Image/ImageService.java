@@ -21,7 +21,7 @@ public class ImageService implements ImageRepository{
     }
 
     @Override
-    public Optional<Image> getById(Long id) {
+    synchronized public Optional<Image> getById(Long id) {
         Optional<Images> imageModel =  imagesCrud.findById(id);
         if(imageModel.isEmpty()){
             return Optional.empty();
@@ -31,7 +31,7 @@ public class ImageService implements ImageRepository{
     }
 
     @Override
-    public Optional<Image> getByUrl(String url) {
+    synchronized public Optional<Image> getByUrl(String url) {
         Optional<Images> imageModel = Optional.ofNullable(imagesCrud.findByUrl(url));
         if(imageModel.isEmpty()){
             return Optional.empty();
@@ -41,12 +41,23 @@ public class ImageService implements ImageRepository{
     }
 
     @Override
-    public Optional<List<Image>> getByUserId(Long userId) {
+    synchronized public Optional<List<Image>> getByUserId(Long userId) {
         Optional<List<Images>> imageModel = Optional.ofNullable(imagesCrud.findByUserId(userId));
         if(imageModel.isEmpty()){
             return Optional.empty();
         }
         List<Image> image = imageDto.toImagesDomain(imageModel.get());
         return Optional.of(image);
+    }
+
+    @Override
+    synchronized public Image add(Image image) {
+        Images imageSaved = imagesCrud.save(imageDto.toImageModel(image));
+        return imageDto.toImageDomain(imageSaved);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        imagesCrud.deleteById(id);
     }
 }
