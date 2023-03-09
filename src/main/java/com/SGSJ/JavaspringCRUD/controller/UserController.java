@@ -2,7 +2,9 @@ package com.SGSJ.JavaspringCRUD.controller;
 
 import com.SGSJ.JavaspringCRUD.domain.User.User;
 import com.SGSJ.JavaspringCRUD.domain.User.UserRepository;
+import com.SGSJ.JavaspringCRUD.security.SecurityUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,19 +37,14 @@ public class UserController {
         return userRepo.save(user);
     }
 
-    @PostMapping("/login")
-    public void login() {
-    }
-
-    @DeleteMapping("/delete/{userId}")
+    @DeleteMapping("/{userId}")
     public String deleteUser(@PathVariable Long userId, @RequestBody String userName) {
        userRepo.delete(userId);
        return "User " + userName + " deleted!";
     }
 
-    @PutMapping("/update/{userId}")
+    @PutMapping("/{userId}")
     public User updateUserById(@RequestBody User user, @PathVariable Long userId) {
         return userRepo.update(user, userId);
     }
-
 }

@@ -3,7 +3,9 @@ package com.SGSJ.JavaspringCRUD.domain.User;
 import com.SGSJ.JavaspringCRUD.model.Users.Users;
 import com.SGSJ.JavaspringCRUD.model.Users.UsersCrud;
 import com.SGSJ.JavaspringCRUD.security.Encrypt;
+import com.SGSJ.JavaspringCRUD.security.SecurityUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +15,12 @@ import java.util.Optional;
 public class UserService implements UserRepository {
     private UsersCrud usersCrud;
     private UserDTO userDto;
+    private PasswordEncoder passwordEncoder;
 
-    @Autowired public UserService(UsersCrud usersCrud, UserDTO userDto) {
+    @Autowired public UserService(UsersCrud usersCrud, UserDTO userDto, PasswordEncoder passwordEncoder) {
         this.usersCrud = usersCrud;
         this.userDto = userDto;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -45,11 +49,10 @@ public class UserService implements UserRepository {
     }
 
     @Override
-    synchronized public User save(User user) {
+    public User save(User user) {
         String password = user.getPassword();
-        String salt = Encrypt.getSalt(10);
-        String hash = Encrypt.generateStringHash(password, salt);
-        user.setPassword(hash);
+        String passwordHash = passwordEncoder.encode(password);
+        user.setPassword(passwordHash);
         return userDto.toUserDomain(usersCrud.save(userDto.toUserModel(user)));
     }
 
